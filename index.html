@@ -4,10 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Roll dice</title>
   </head>
   <body>
+    <main class="main">
+      <section class="left active">
+        <h1 class="player">Player 1</h1>
+        <span class="score score-0 mt">25</span>
+        <div class="current-score mt-3">
+          <span class="current-score__heading">Score</span>
+          <span class="current-score__digit current-0">0</span>
+        </div>
+        <button class="new-game">
+          <ion-icon class="refresh" name="refresh"></ion-icon>
+        </button>
+      </section>
+      <section class="right">
+        <h1 class="player">Player 2</h1>
+        <span class="score score-1 mt">0</span>
+        <div class="current-score mt-3">
+          <span class="current-score__heading">Score</span>
+          <span class="current-score__digit current-1">0</span>
+        </div>
+      </section>
+
+      <div class="dice">
+        <img src="img/dice-1.svg" alt="Rolling dice" class="dice__img" />
+        <button class="btn dice__roll mt-2">Roll dice</button>
+        <button class="btn dice__hold mt">Hold</button>
+      </div>
+    </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>
