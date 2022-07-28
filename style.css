@@ -69,6 +69,7 @@ body {
   padding-block: 3rem;
   position: relative;
 }
+
 .active {
   background-color: rgba(255, 255, 255, 0.6);
   /* transition: all 0.6s; */
@@ -153,12 +154,6 @@ body {
   border-radius: 1rem;
   border: none;
 }
-/* .dice__roll {
-  
-}
-.dice__hold {
-  
-} */
 .new-game {
   cursor: pointer;
   position: absolute;
@@ -182,6 +177,7 @@ body {
   height: 3rem;
   color: #fff;
 }
-.unvisible {
-  display: none;
+.won {
+  font-size: 2rem;
+  font-weight: 400;
 }
