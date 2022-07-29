@@ -34,13 +34,13 @@ const newGame = function () {
   current2.textContent = score;
   diceRollEl.disabled = false;
   diceHold.disabled = false;
-  diceImg.style.display = "none";
+  diceImg.style.visibility = "hidden";
 };
 
 newGame();
 diceRollEl.addEventListener("click", function () {
   let dice = Math.floor(Math.random() * 6) + 1;
-  diceImg.style.display = "block";
+  diceImg.style.visibility = "visible";
   console.log(`player ${player} got dice number ${dice}`);
   document.getElementById("dice_img").src = `img/dice-${dice}.svg`;
   if (dice === 6) {
@@ -75,11 +75,11 @@ diceHold.addEventListener("click", function () {
 
   console.log(`player ${player} hold dice`);
   const pointEl = document.querySelector(`.score-${player}`);
-  pointEl.textContent = points[player];
 
-  if (points[player] >= 10) {
+  if (points[player] >= 100) {
+    pointEl.textContent = 100;
     const currentPlayer = document.querySelector(`.player-${player}`);
-    currentPlayer.style.backgroundColor = "black";
+    currentPlayer.style.backgroundColor = "#222";
 
     const currentPlayerHeading = document.querySelector(
       `.player-${player}-heading`
@@ -89,11 +89,12 @@ diceHold.addEventListener("click", function () {
 
     diceRollEl.disabled = true;
     diceHold.disabled = true;
-    diceImg.style.display = "none";
-    leftEl.classList.remove("active");
-    rightEl.classList.remove("active");
+    diceImg.style.visibility = "hidden";
+    currentPlayer.classList.remove("active");
     return;
   }
+
+  pointEl.textContent = points[player];
 
   player = player === 0 ? 1 : 0;
 
@@ -104,9 +105,6 @@ diceHold.addEventListener("click", function () {
   console.log(`new player ${player} chance`);
   console.log(`--------------------------------`);
 });
-
-// const currentScoreEl = document.querySelector(`.current-${player}`);
-// currentScoreEl.textContent = points[player];
 
 reset.addEventListener("click", function () {
   newGame();
