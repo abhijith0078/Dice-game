@@ -11,26 +11,36 @@ const pointEl2 = document.querySelector(".score-1");
 const current1 = document.querySelector(".current-0");
 const current2 = document.querySelector(".current-1");
 
-let score, player, points;
+let score,
+  player = 0,
+  points;
 
 const newGame = function () {
+  const currentPlayer = document.querySelector(`.player-${player}`);
+  currentPlayer.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+
+  const currentPlayerHeading = document.querySelector(
+    `.player-${player}-heading`
+  );
+  currentPlayerHeading.textContent = `Player ${player}`;
+  currentPlayerHeading.style.color = "#000";
   points = [0, 0];
   score = 0;
   player = 0;
-  document.querySelector(".score").classList.remove("won");
+  leftEl.classList.add("active");
   pointEl1.textContent = score;
   pointEl2.textContent = score;
   current1.textContent = score;
   current2.textContent = score;
   diceRollEl.disabled = false;
   diceHold.disabled = false;
-
-  diceImg.style.display = "block";
+  diceImg.style.display = "none";
 };
 
 newGame();
 diceRollEl.addEventListener("click", function () {
   let dice = Math.floor(Math.random() * 6) + 1;
+  diceImg.style.display = "block";
   console.log(`player ${player} got dice number ${dice}`);
   document.getElementById("dice_img").src = `img/dice-${dice}.svg`;
   if (dice === 6) {
@@ -67,13 +77,21 @@ diceHold.addEventListener("click", function () {
   const pointEl = document.querySelector(`.score-${player}`);
   pointEl.textContent = points[player];
 
-  if (points[player] >= 0) {
-    document.querySelector(".score").classList.add("won");
+  if (points[player] >= 10) {
+    const currentPlayer = document.querySelector(`.player-${player}`);
+    currentPlayer.style.backgroundColor = "black";
 
-    pointEl.textContent = `👏 won 👏`;
+    const currentPlayerHeading = document.querySelector(
+      `.player-${player}-heading`
+    );
+    currentPlayerHeading.textContent = "You Won";
+    currentPlayerHeading.style.color = "#fff";
+
     diceRollEl.disabled = true;
     diceHold.disabled = true;
     diceImg.style.display = "none";
+    leftEl.classList.remove("active");
+    rightEl.classList.remove("active");
     return;
   }
 
