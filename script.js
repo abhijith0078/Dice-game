@@ -22,7 +22,7 @@ const newGame = function () {
   const currentPlayerHeading = document.querySelector(
     `.player-${player}-heading`
   );
-  currentPlayerHeading.textContent = `Player ${player}`;
+  currentPlayerHeading.textContent = `Player ${player + 1}`;
   currentPlayerHeading.style.color = "#000";
   points = [0, 0];
   score = 0;
