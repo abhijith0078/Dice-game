@@ -27,6 +27,8 @@ const newGame = function () {
   points = [0, 0];
   score = 0;
   player = 0;
+
+  rightEl.classList.remove("active");
   leftEl.classList.add("active");
   pointEl1.textContent = score;
   pointEl2.textContent = score;
